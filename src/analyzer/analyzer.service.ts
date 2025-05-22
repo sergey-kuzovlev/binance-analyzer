@@ -5,6 +5,8 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AnalyzerService {
     analyze(data) {
+        if(!data.length) return null;
+
         const start = data[0].open;
         const end = data[data.length - 1].close;
 
@@ -14,7 +16,9 @@ export class AnalyzerService {
             start,
             end,
             change,
-            trend: (change > 0) ? 'increases' : 'decreases',
+            trend: (change > 0) ?
+                'increases' : (change < 0) ?
+                'decreases' : 'no change',
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AnalyzerController } from './analyzer.controller';
-import { AnalyzerService } from './analyzer/analyzer.service';
+import { AnalyzerService } from './analyzer.service';
 import { BinanceService } from './binance.service';
 
 @Module({

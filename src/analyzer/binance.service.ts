@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 @Injectable()
 export class BinanceService {
