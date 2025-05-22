@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable } from '@nestjs/common';
+import { AnalysisResult } from './interfaces/analysisResult';
+import { Trend } from './enums/trend';
 
 @Injectable()
 export class AnalyzerService {
-    analyze(data) {
+    analyze(data): AnalysisResult | null {
         if(!data.length) return null;
 
         const start = data[0].open;
@@ -17,8 +19,8 @@ export class AnalyzerService {
             end,
             change,
             trend: (change > 0) ?
-                'increases' : (change < 0) ?
-                'decreases' : 'no change',
+                Trend.Increase : (change < 0) ?
+                Trend.Decrease : Trend.NoChange,
         }
     }
 }

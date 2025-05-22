@@ -1,4 +1,5 @@
 import { AnalyzerService } from './analyzer.service';
+import { Trend } from './enums/trend';
 
 describe('AnalyzerService', () => {
   let service: AnalyzerService;
@@ -19,7 +20,7 @@ describe('AnalyzerService', () => {
       { open: 105, close: 110 }
     ])
 
-    expect(result?.trend).toBe('increases')
+    expect(result?.trend).toBe(Trend.Increase)
   })
 
   it('should detect decreased price', () => {
@@ -28,7 +29,7 @@ describe('AnalyzerService', () => {
       { open: 145, close: 130 }
     ])
 
-    expect(result?.trend).toBe('decreases')
+    expect(result?.trend).toBe(Trend.Decrease)
   })
 
   it('should detect no change', () => {
@@ -37,6 +38,6 @@ describe('AnalyzerService', () => {
       { open: 200, close: 200 }
     ])
 
-    expect(result?.trend).toBe('no change')
+    expect(result?.trend).toBe(Trend.NoChange)
   })
 });
